@@ -4,7 +4,7 @@ from LHL import LHL
 # import CSP as csp
 import Solvers as solvers
 import GA as ga
-from GA_Probs import easyGA, mediumGA, hardGA
+from GA_Probs import easyGA, mediumGA, hardGA, expertGA
 from boards import easyBackTrack, easyLHL, easySet
 import numpy as np
 from memory_profiler import memory_usage
@@ -41,6 +41,95 @@ def average(dct):
     vals = dct.values()
     mean = sum(vals)/len(vals)
     return mean
+
+def printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory):
+    ### PRINT TIMES
+    print(btime + str(backtrackTimes))
+    print(line)
+    print(lhlStr + str(lhlTimes))
+    print(line)
+    print(saStr + str(saTimes))
+    print(line)
+    print(cspStr + str(norvigTimes))
+    print(line)
+    #print("Genetic Algorithm Times:\n" + str(gaTimes))
+
+    ### PRINT MEMORY
+    print(memUse)
+    print(bmem + str(backtrackMemory))
+    print(line)
+    print(lhlmemStr + str(lhlMem))
+    print(line)
+    print(samemStr + str(saMemory))
+    print(line)
+    print(cspmemStr + str(norvigMemory))
+    print(line)
+
+    ### AVERERAGE TIMES
+    print(avgTimeStr)
+    print(btimeMean + str(average(backtrackTimes)))
+    print(line)
+    print(lhltimeMean + str(average(lhlTimes)))
+    print(line)
+    print(satimeMean + str(average(saTimes)))
+    print(line)
+    print(csptimeMean + str(average(norvigTimes)))
+    print(line)
+
+    ### AVERAGE MEMORY
+    print(avgMemStr)
+    print(bmemMean + str(average(backtrackMemory)))
+    print(line)
+    print(lhlmemMean + str(average(lhlMem)))
+    print(line)
+    print(samemMean + str(average(saMemory)))
+    print(line)
+    print(cspmemMean + str(average(norvigMemory)))
+    print(line)
+
+def writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, fname):
+    f = open(fname, "w")
+    f.write("---- TIME TO COMPLETE ----\n")
+    f.write(btime + str(backtrackTimes) + "\n")
+    f.write(line + "\n")
+    f.write(lhlStr + str(lhlTimes) + "\n")
+    f.write(line + "\n")
+    f.write(saStr + str(saTimes) + "\n")
+    f.write(line + "\n")
+    f.write(cspStr + str(norvigTimes) + "\n")
+    f.write(line + "\n")
+    #print("Genetic Algorithm Times:\n" + str(gaTimes))
+    ### PRINT MEMORY
+    f.write(memUse + "\n")
+    f.write(bmem + str(backtrackMemory) + "\n")
+    f.write(line + "\n")
+    f.write(lhlmemStr + str(lhlMem) + "\n")
+    f.write(line + "\n")
+    f.write(samemStr + str(saMemory) + "\n")
+    f.write(line + "\n")
+    f.write(cspmemStr + str(norvigMemory) + "\n")
+    f.write(line + "\n")
+    ### AVERERAGE TIMES
+    f.write(avgTimeStr + "\n")
+    f.write(btimeMean + str(average(backtrackTimes)) + "\n")
+    f.write(line + "\n")
+    f.write(lhltimeMean + str(average(lhlTimes)) + "\n")
+    f.write(line + "\n")
+    f.write(satimeMean + str(average(saTimes)) + "\n")
+    f.write(line + "\n")
+    f.write(csptimeMean + str(average(norvigTimes)) + "\n")
+    f.write(line + "\n")
+    ### AVERAGE MEMORY
+    f.write(avgMemStr)
+    f.write(bmemMean + str(average(backtrackMemory)) + "\n")
+    f.write(line + "\n")
+    f.write(lhlmemMean + str(average(lhlMem)) + "\n")
+    f.write(line + "\n")
+    f.write(samemMean + str(average(saMemory)) + "\n")
+    f.write(line + "\n")
+    f.write(cspmemMean + str(average(norvigMemory)) + "\n")
+    f.write(line + "\n")
+    f.close()
 
 def compareEasy():
     ### BACKTRACK TIMING
@@ -118,52 +207,9 @@ def compareEasy():
     #     mem, gs = memory_usage((genetic.solve, ), max_usage=True, retval=True)
     #     gaTimes[n] = stop
     #     gaMemory[n] += mem
-    
-
-    ### PRINT TIMES
     print("---- TIME TO COMPLETE EASY ----")
-    print(btime + str(backtrackTimes))
-    print(line)
-    print(lhlStr + str(lhlTimes))
-    print(line)
-    print(saStr + str(saTimes))
-    print(line)
-    print(cspStr + str(norvigTimes))
-    print(line)
-    #print("Genetic Algorithm Times:\n" + str(gaTimes))
-
-    ### PRINT MEMORY
-    print(memUse)
-    print(bmem + str(backtrackMemory))
-    print(line)
-    print(lhlmemStr + str(lhlMem))
-    print(line)
-    print(samemStr + str(saMemory))
-    print(line)
-    print(cspmemStr + str(norvigMemory))
-    print(line)
-
-    ### AVERERAGE TIMES
-    print(avgTimeStr)
-    print(btimeMean + str(average(backtrackTimes)))
-    print(line)
-    print(lhltimeMean + str(average(lhlTimes)))
-    print(line)
-    print(satimeMean + str(average(saTimes)))
-    print(line)
-    print(csptimeMean + str(average(norvigTimes)))
-    print(line)
-
-    ### AVERAGE MEMORY
-    print(avgMemStr)
-    print(bmemMean + str(average(backtrackMemory)))
-    print(line)
-    print(lhlmemMean + str(average(lhlMem)))
-    print(line)
-    print(samemMean + str(average(saMemory)))
-    print(line)
-    print(cspmemMean + str(average(norvigMemory)))
-    print(line)
+    printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory)
+    writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsEasy.txt") 
 
 
 from boards import medBackTrack, medLHL, mediumSet
@@ -247,48 +293,8 @@ def compareMed():
 
     ### PRINT TIMES
     print("---- TIME TO COMPLETE MEDIUM ----")
-    print(btime + str(backtrackTimes))
-    print(line)
-    print(lhlStr + str(lhlTimes))
-    print(line)
-    print(saStr + str(saTimes))
-    print(line)
-    print(cspStr + str(norvigTimes))
-    print(line)
-    #print("Genetic Algorithm Times:\n" + str(gaTimes))
-
-    ### PRINT MEMORY
-    print(memUse)
-    print(bmem + str(backtrackMemory))
-    print(line)
-    print(lhlmemStr + str(lhlMem))
-    print(line)
-    print(samemStr + str(saMemory))
-    print(line)
-    print(cspmemStr + str(norvigMemory))
-    print(line)
-
-    ### AVERERAGE TIMES
-    print(avgTimeStr)
-    print(btimeMean + str(average(backtrackTimes)))
-    print(line)
-    print(lhltimeMean + str(average(lhlTimes)))
-    print(line)
-    print(satimeMean + str(average(saTimes)))
-    print(line)
-    print(csptimeMean + str(average(norvigTimes)))
-    print(line)
-
-    ### AVERAGE MEMORY
-    print(avgMemStr)
-    print(bmemMean + str(average(backtrackMemory)))
-    print(line)
-    print(lhlmemMean + str(average(lhlMem)))
-    print(line)
-    print(samemMean + str(average(saMemory)))
-    print(line)
-    print(cspmemMean + str(average(norvigMemory)))
-    print(line)
+    printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory)
+    writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsMed.txt")
 
 
 from boards import hardBackTrack, hardLHL, hardSet
@@ -372,53 +378,98 @@ def compareHard():
 
     ### PRINT TIMES
     print("---- TIME TO COMPLETE HARD ----")
-    print(btime + str(backtrackTimes))
-    print(line)
-    print(lhlStr + str(lhlTimes))
-    print(line)
-    print(saStr + str(saTimes))
-    print(line)
-    print(cspStr + str(norvigTimes))
-    print(line)
-    #print("Genetic Algorithm Times:\n" + str(gaTimes))
+    printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory)
+    writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsHard.txt")
 
-    ### PRINT MEMORY
-    print(memUse)
-    print(bmem + str(backtrackMemory))
-    print(line)
-    print(lhlmemStr + str(lhlMem))
-    print(line)
-    print(samemStr + str(saMemory))
-    print(line)
-    print(cspmemStr + str(norvigMemory))
-    print(line)
+from boards import expertBackTrack, expertLHL, expertSet
+def compareExpert():
+    ### BACKTRACK TIMING
+    backtrackTimes = {}
+    backtrackMemory = {}
+    b = Backtrack()
+    caseNames = expertBackTrack.keys()
+    for n in caseNames:
+        start = time.time()
+        b.setBoard(expertBackTrack[n])
+        b.solve()
+        stop = time.time() - start
+        mem = memory_usage((b.setBoard, (expertBackTrack[n],)), max_usage=True)
+        mem += memory_usage((b.solve, ), max_usage=True)
+        backtrackTimes[n] = stop
+        backtrackMemory[n] = mem
+        print()
+    print()
 
-    ### AVERERAGE TIMES
-    print(avgTimeStr)
-    print(btimeMean + str(average(backtrackTimes)))
-    print(line)
-    print(lhltimeMean + str(average(lhlTimes)))
-    print(line)
-    print(satimeMean + str(average(saTimes)))
-    print(line)
-    print(csptimeMean + str(average(norvigTimes)))
-    print(line)
+    ###  LHL TIMING
+    lhlTimes = {}
+    lhlMem = {}
+    lee = LHL()
+    caseNames = expertLHL.keys()
+    for n in caseNames:
+        start = time.time()
+        lee.solveSudoku(expertLHL[n])
+        stop = time.time() - start
+        mem = memory_usage((lee.solveSudoku, (expertLHL[n],)), max_usage=True)
+        lhlTimes[n] = stop
+        lhlMem[n] = mem
+    print()
+    
+    ### SIMULATED ANNEALING
+    saTimes = {}
+    saMemory = {}
+    caseNames = expertSet.keys()
+    for n in caseNames:
+        start = time.time()
+        simAn = solvers.solve_simulated_annealing(expertSet[n])
+        solvers.display(simAn)
+        stop = time.time() - start
+        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (expertSet[n],)), max_usage=True, retval=True)
+        mem += memory_usage((solvers.display, (simAn,)), max_usage=True)
+        saTimes[n] = stop
+        saMemory[n] = mem
 
-    ### AVERAGE MEMORY
-    print(avgMemStr)
-    print(bmemMean + str(average(backtrackMemory)))
-    print(line)
-    print(lhlmemMean + str(average(lhlMem)))
-    print(line)
-    print(samemMean + str(average(saMemory)))
-    print(line)
-    print(cspmemMean + str(average(norvigMemory)))
-    print(line)
+    ### Norvig CSP
+    norvigTimes = {}
+    norvigMemory = {}
+    for n in caseNames:
+        start = time.time()
+        norvig = solvers.solve(expertSet[n])
+        solvers.display(norvig)
+        stop = time.time() - start
+        mem, norvig = memory_usage((solvers.solve, (expertSet[n],)), max_usage=True, retval=True)
+        mem += memory_usage((solvers.display, (norvig,)), max_usage=True)
+        norvigTimes[n] = stop
+        norvigMemory[n] = mem
+
+    ### Genetic Algorithm (VOID TAKES TOO LONG)
+    # gaTimes = {}
+    # gaMemory = {}
+    # caseNames = easyGA.keys()
+    # genetic = ga.Sudoku()
+    # for n in caseNames:
+    #     start = time.time()
+    #     grid = np.array(list(easyGA[n])).reshape((9,9)).astype(int)
+    #     genetic.load(grid)
+    #     generation, solution = genetic.solve()
+    #     print(solution.values)
+    #     stop = time.time() - start
+    #     mem = memory_usage((genetic.load, (grid,)), max_usage=True)
+    #     gaMemory[n] = mem
+    #     mem, gs = memory_usage((genetic.solve, ), max_usage=True, retval=True)
+    #     gaTimes[n] = stop
+    #     gaMemory[n] += mem
+    
+
+    ### PRINT TIMES
+    print("---- TIME TO COMPLETE expert ----")
+    printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory)
+    writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsExpert.txt")
 
 
 #compareEasy()
 #compareMed()
-compareHard()
+#compareHard()
+compareExpert()
 
 
 # -- Measurement libraries
@@ -434,16 +485,13 @@ compareHard()
 # https://python.plainenglish.io/solve-a-sudoku-puzzle-using-backtracking-in-python-8e9eb58e57e6#3498
 
 #  -- Simulated annealing code
-# https://github.com/erichowens/SudokuSolver
-# https://www.adrian.idv.hk/2019-01-30-simanneal/
-# https://github.com/challengingLuck/youtube/blob/master/sudoku/sudoku.py
+# https://github.com/MaximeDaigle/sudoku
 
 # -- CSP code
 # https://norvig.com/sudoku.html
 # https://gist.github.com/ksurya/3940679
 
 #  -- Genetic algorithm code
-# https://github.com/ctjacobs/sudoku-genetic-algorithm
 # https://github.com/chinyan/Genetic-Algorithm-based-Sudoku-Solver
 
 # -- A Comparison of Algorithms

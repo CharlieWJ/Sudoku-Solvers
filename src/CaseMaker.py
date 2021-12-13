@@ -1,5 +1,5 @@
-from boards import cases, tests, easyLHL, medLHL, hardLHL
-from GA_Probs import easy, medium, hard, expert
+from boards import cases, tests, easyLHL, medLHL, hardLHL, expertLHL
+from GA_Probs import easyGA, mediumGA, hardGA, expertGA
 
 def makeCaseNums(array):
     case = []
@@ -50,30 +50,32 @@ def makeCaseLHLfromGA(string):
 #print(makeCaseNums(cases["case1"]))
 #print(makeCase1D(tests['test1']))
 #print(makeCase1D(tests['case2']))
-"""
-keys = hard.keys()
+
+# keys = expertGA.keys()
+# x = 1
+# for k in keys:
+#     print('"expert' + str(x) + '" : [')
+#     case = makeCaseLHLfromGA(expertGA[k])
+#     for r in case:
+#         print(str(r) + ",")
+#     print("],")
+#     x += 1
+#     print()
+
+
+keys = expertLHL.keys()
 x = 1
 for k in keys:
-    print('"hard' + str(x) + '" : [')
-    case = makeCaseLHLfromGA(hard[k])
+    print('"expert' + str(x) + '" : [')
+    case = makeCaseNums(expertLHL[k])
     for r in case:
         print(str(r) + ",")
     print("],")
     x += 1
     print()
+
+
 """
-
-keys = easyLHL.keys()
-x = 1
-for k in keys:
-    print('"easy' + str(x) + '" : [')
-    case = makeCaseNums(easyLHL[k])
-    for r in case:
-        print(str(r) + ",")
-    print("],")
-    x += 1
-    print()
-
 keys = medLHL.keys()
 x = 1
 for k in keys:
@@ -95,3 +97,4 @@ for k in keys:
     print("],")
     x += 1
     print()
+"""
