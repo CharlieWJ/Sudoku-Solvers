@@ -137,7 +137,7 @@ class LHL:
 
         self.Place(self.SeqPtr)
         #print(self.solved)
-        self.showBoard()
+        #self.showBoard()
 
         #return self.solved
 

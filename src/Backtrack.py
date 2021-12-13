@@ -1,6 +1,7 @@
 class Backtrack:
-    def __init__(self, board):
-        self.board = board
+    def __init__(self):
+        #self.board = board
+        return
     
     def setBoard(self, board):
         self.board = board
