@@ -142,8 +142,9 @@ def compareEasy():
         b.setBoard(easyBackTrack[n])
         b.solve()
         stop = time.time() - start
-        mem = memory_usage((b.setBoard, (easyBackTrack[n],)), max_usage=True)
-        mem += memory_usage((b.solve, ), max_usage=True)
+        mem = memory_usage((b.setBoard, (easyBackTrack[n],)))#, max_usage=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((b.solve, )))#, max_usage=True))
         backtrackTimes[n] = stop
         backtrackMemory[n] = mem
         print()
@@ -158,7 +159,7 @@ def compareEasy():
         start = time.time()
         lee.solveSudoku(easyLHL[n])
         stop = time.time() - start
-        mem = memory_usage((lee.solveSudoku, (easyLHL[n],)), max_usage=True)
+        mem = sum(memory_usage((lee.solveSudoku, (easyLHL[n],))))#, max_usage=True)
         lhlTimes[n] = stop
         lhlMem[n] = mem
     print()
@@ -172,8 +173,9 @@ def compareEasy():
         simAn = solvers.solve_simulated_annealing(easySet[n])
         solvers.display(simAn)
         stop = time.time() - start
-        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (easySet[n],)), max_usage=True, retval=True)
-        mem += memory_usage((solvers.display, (simAn,)), max_usage=True)
+        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (easySet[n],)), retval=True) #, max_usage=True, retval=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((solvers.display, (simAn,))))#, max_usage=True)
         saTimes[n] = stop
         saMemory[n] = mem
 
@@ -185,8 +187,9 @@ def compareEasy():
         norvig = solvers.solve(easySet[n])
         solvers.display(norvig)
         stop = time.time() - start
-        mem, norvig = memory_usage((solvers.solve, (easySet[n],)), max_usage=True, retval=True)
-        mem += memory_usage((solvers.display, (norvig,)), max_usage=True)
+        mem, norvig = memory_usage((solvers.solve, (easySet[n],)), retval=True) #, max_usage=True, retval=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((solvers.display, (norvig,))))#, max_usage=True)
         norvigTimes[n] = stop
         norvigMemory[n] = mem
 
@@ -224,8 +227,10 @@ def compareMed():
         b.setBoard(medBackTrack[n])
         b.solve()
         stop = time.time() - start
-        mem = memory_usage((b.setBoard, (medBackTrack[n],)), max_usage=True)
-        mem += memory_usage((b.solve, ), max_usage=True)
+        #mem = memory_usage((b.setBoard, (medBackTrack[n],)), max_usage=True)
+        #mem += memory_usage((b.solve, ), max_usage=True)
+        mem = sum(memory_usage((b.setBoard, (medBackTrack[n],))))#, max_usage=True)
+        mem += sum(memory_usage((b.solve, )))#, max_usage=True))
         backtrackTimes[n] = stop
         backtrackMemory[n] = mem
         print()
@@ -240,7 +245,9 @@ def compareMed():
         start = time.time()
         lee.solveSudoku(medLHL[n])
         stop = time.time() - start
-        mem = memory_usage((lee.solveSudoku, (medLHL[n],)), max_usage=True)
+        #mem = memory_usage((lee.solveSudoku, (medLHL[n],)), max_usage=True)
+        mem = sum(memory_usage((lee.solveSudoku, (medLHL[n],))))#, max_usage=True)
+        #mem += sum(mem)
         lhlTimes[n] = stop
         lhlMem[n] = mem
     print()
@@ -254,8 +261,11 @@ def compareMed():
         simAn = solvers.solve_simulated_annealing(mediumSet[n])
         solvers.display(simAn)
         stop = time.time() - start
-        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (mediumSet[n],)), max_usage=True, retval=True)
-        mem += memory_usage((solvers.display, (simAn,)), max_usage=True)
+        #mem, simAn = memory_usage((solvers.solve_simulated_annealing, (mediumSet[n],)), max_usage=True, retval=True)
+        #mem += memory_usage((solvers.display, (simAn,)), max_usage=True)
+        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (mediumSet[n],)), retval=True) #, max_usage=True, retval=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((solvers.display, (simAn,))))#, max_usage=True)
         saTimes[n] = stop
         saMemory[n] = mem
 
@@ -267,8 +277,11 @@ def compareMed():
         norvig = solvers.solve(mediumSet[n])
         solvers.display(norvig)
         stop = time.time() - start
-        mem, norvig = memory_usage((solvers.solve, (mediumSet[n],)), max_usage=True, retval=True)
-        mem += memory_usage((solvers.display, (norvig,)), max_usage=True)
+        #mem, norvig = memory_usage((solvers.solve, (mediumSet[n],)), max_usage=True, retval=True)
+        #mem += memory_usage((solvers.display, (norvig,)), max_usage=True)
+        mem, norvig = memory_usage((solvers.solve, (mediumSet[n],)), retval=True) #, max_usage=True, retval=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((solvers.display, (norvig,))))#, max_usage=True)
         norvigTimes[n] = stop
         norvigMemory[n] = mem
 
@@ -309,8 +322,10 @@ def compareHard():
         b.setBoard(hardBackTrack[n])
         b.solve()
         stop = time.time() - start
-        mem = memory_usage((b.setBoard, (hardBackTrack[n],)), max_usage=True)
-        mem += memory_usage((b.solve, ), max_usage=True)
+        #mem = memory_usage((b.setBoard, (hardBackTrack[n],)), max_usage=True)
+        #mem += memory_usage((b.solve, ), max_usage=True)
+        mem = sum(memory_usage((b.setBoard, (hardBackTrack[n],))))#, max_usage=True)
+        mem += sum(memory_usage((b.solve, )))#, max_usage=True))
         backtrackTimes[n] = stop
         backtrackMemory[n] = mem
         print()
@@ -325,7 +340,9 @@ def compareHard():
         start = time.time()
         lee.solveSudoku(hardLHL[n])
         stop = time.time() - start
-        mem = memory_usage((lee.solveSudoku, (hardLHL[n],)), max_usage=True)
+        #mem = memory_usage((lee.solveSudoku, (hardLHL[n],)), max_usage=True)
+        mem = sum(memory_usage((lee.solveSudoku, (hardLHL[n],))))#, max_usage=True)
+        #mem += sum(mem)
         lhlTimes[n] = stop
         lhlMem[n] = mem
     print()
@@ -339,8 +356,11 @@ def compareHard():
         simAn = solvers.solve_simulated_annealing(hardSet[n])
         solvers.display(simAn)
         stop = time.time() - start
-        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (hardSet[n],)), max_usage=True, retval=True)
-        mem += memory_usage((solvers.display, (simAn,)), max_usage=True)
+        #mem, simAn = memory_usage((solvers.solve_simulated_annealing, (hardSet[n],)), max_usage=True, retval=True)
+        #mem += memory_usage((solvers.display, (simAn,)), max_usage=True)
+        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (hardSet[n],)), retval=True) #, max_usage=True, retval=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((solvers.display, (simAn,))))#, max_usage=True)
         saTimes[n] = stop
         saMemory[n] = mem
 
@@ -352,8 +372,11 @@ def compareHard():
         norvig = solvers.solve(hardSet[n])
         solvers.display(norvig)
         stop = time.time() - start
-        mem, norvig = memory_usage((solvers.solve, (hardSet[n],)), max_usage=True, retval=True)
-        mem += memory_usage((solvers.display, (norvig,)), max_usage=True)
+        #mem, norvig = memory_usage((solvers.solve, (hardSet[n],)), max_usage=True, retval=True)
+        #mem += memory_usage((solvers.display, (norvig,)), max_usage=True)
+        mem, norvig = memory_usage((solvers.solve, (hardSet[n],)), retval=True) #, max_usage=True, retval=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((solvers.display, (norvig,))))#, max_usage=True)
         norvigTimes[n] = stop
         norvigMemory[n] = mem
 
@@ -393,8 +416,10 @@ def compareExpert():
         b.setBoard(expertBackTrack[n])
         b.solve()
         stop = time.time() - start
-        mem = memory_usage((b.setBoard, (expertBackTrack[n],)), max_usage=True)
-        mem += memory_usage((b.solve, ), max_usage=True)
+        #mem = memory_usage((b.setBoard, (expertBackTrack[n],)), max_usage=True)
+        #mem += memory_usage((b.solve, ), max_usage=True)
+        mem = sum(memory_usage((b.setBoard, (expertBackTrack[n],))))#, max_usage=True)
+        mem += sum(memory_usage((b.solve, )))#, max_usage=True))
         backtrackTimes[n] = stop
         backtrackMemory[n] = mem
         print()
@@ -409,7 +434,9 @@ def compareExpert():
         start = time.time()
         lee.solveSudoku(expertLHL[n])
         stop = time.time() - start
-        mem = memory_usage((lee.solveSudoku, (expertLHL[n],)), max_usage=True)
+        #mem = memory_usage((lee.solveSudoku, (expertLHL[n],)), max_usage=True)
+        mem = sum(memory_usage((lee.solveSudoku, (expertLHL[n],)))) #, max_usage=True)
+        #mem += sum(mem)
         lhlTimes[n] = stop
         lhlMem[n] = mem
     print()
@@ -423,8 +450,11 @@ def compareExpert():
         simAn = solvers.solve_simulated_annealing(expertSet[n])
         solvers.display(simAn)
         stop = time.time() - start
-        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (expertSet[n],)), max_usage=True, retval=True)
-        mem += memory_usage((solvers.display, (simAn,)), max_usage=True)
+        #mem, simAn = memory_usage((solvers.solve_simulated_annealing, (expertSet[n],)), max_usage=True, retval=True)
+        #mem += memory_usage((solvers.display, (simAn,)), max_usage=True)
+        mem, simAn = memory_usage((solvers.solve_simulated_annealing, (expertSet[n],)), retval=True) #, max_usage=True, retval=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((solvers.display, (simAn,))))#, max_usage=True)
         saTimes[n] = stop
         saMemory[n] = mem
 
@@ -436,8 +466,11 @@ def compareExpert():
         norvig = solvers.solve(expertSet[n])
         solvers.display(norvig)
         stop = time.time() - start
-        mem, norvig = memory_usage((solvers.solve, (expertSet[n],)), max_usage=True, retval=True)
-        mem += memory_usage((solvers.display, (norvig,)), max_usage=True)
+        #mem, norvig = memory_usage((solvers.solve, (expertSet[n],)), max_usage=True, retval=True)
+        #mem += memory_usage((solvers.display, (norvig,)), max_usage=True)
+        mem, norvig = memory_usage((solvers.solve, (expertSet[n],)), retval=True) #, max_usage=True, retval=True)
+        mem = sum(mem)
+        mem += sum(memory_usage((solvers.display, (norvig,))))#, max_usage=True)
         norvigTimes[n] = stop
         norvigMemory[n] = mem
 
@@ -466,9 +499,9 @@ def compareExpert():
     writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsExpert.txt")
 
 
-#compareEasy()
-#compareMed()
-#compareHard()
+compareEasy()
+compareMed()
+compareHard()
 compareExpert()
 
 
