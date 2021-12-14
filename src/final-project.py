@@ -75,7 +75,8 @@ def compareEasy():
     print("---- TIME TO COMPLETE EASY ----")
     funcs.printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory)
     funcs.writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsEasy.txt") 
-    funcs.plotCases(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "Easy")
+    funcs.plotCases(backtrackTimes, lhlTimes, saTimes, norvigTimes, "Easy")
+    funcs.plotMemory(backtrackMemory, lhlMem, saMemory, norvigMemory, "Easy")
 
 
 
@@ -153,6 +154,8 @@ def compareMed():
     print("---- TIME TO COMPLETE MEDIUM ----")
     funcs.printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory)
     funcs.writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsMed.txt")
+    funcs.plotCases(backtrackTimes, lhlTimes, saTimes, norvigTimes, "Medium")
+    funcs.plotMemory(backtrackMemory, lhlMem, saMemory, norvigMemory, "Medium")
 
 
 from boards import hardBackTrack, hardLHL, hardSet
@@ -229,6 +232,8 @@ def compareHard():
     print("---- TIME TO COMPLETE HARD ----")
     funcs.printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory)
     funcs.writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsHard.txt")
+    funcs.plotCases(backtrackTimes, lhlTimes, saTimes, norvigTimes, "Hard")
+    funcs.plotMemory(backtrackMemory, lhlMem, saMemory, norvigMemory, "Hard")
 
 from boards import expertBackTrack, expertLHL, expertSet
 def compareExpert():
@@ -304,12 +309,14 @@ def compareExpert():
     print("---- TIME TO COMPLETE expert ----")
     funcs.printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory)
     funcs.writeResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, "ResultsExpert.txt")
+    funcs.plotCases(backtrackTimes, lhlTimes, saTimes, norvigTimes, "Expert")
+    funcs.plotMemory(backtrackMemory, lhlMem, saMemory, norvigMemory, "Expert")
 
 
-compareEasy()
+#compareEasy()
 #compareMed()
 #compareHard()
-#compareExpert()
+compareExpert()
 
 
 # -- Measurement libraries

@@ -33,21 +33,46 @@ def average(dct):
     mean = sum(vals)/len(vals)
     return mean
 
-def plotCases(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory, difficulty):
-    bVals, lhlVals, saVals, norvigVals = backtrackTimes.values(), lhlTimes.values(), saTimes.values(), norvigTimes.values()
-    plt.plot(bVals, label="Backtrack")
-    plt.plot(lhlVals, label="LHL")
-    plt.plot(saVals, label="Simulated Annealing")
-    plt.plot(norvigVals, label="CSP")
+def plotCases(backtrackTimes, lhlTimes, saTimes, norvigTimes, difficulty):
+    plt.clf()
+    names = ['1','2','3','4','5','6','7','8','9','10']
+    bVals, lhlVals = list(backtrackTimes.values()), list(lhlTimes.values())
+    saVals, norvigVals = list(saTimes.values()), list(norvigTimes.values())
+    avgTime = [(average(backtrackTimes) + average(lhlTimes) + average(saTimes) + average(norvigTimes))/4]*10
+    plt.plot(names, avgTime, 'k', label="Average")
+    plt.plot(names, bVals, '--bo', label="Backtrack")
+    plt.plot(names, lhlVals, '--x', color='orange', label="LHL")
+    plt.plot(names, saVals, '-g^', label="Simulated Annealing")
+    plt.plot(names, norvigVals, '--rH', label="CSP")
     plt.legend()
-
+    
+    #x = [1,2,3,4,5,6,7,8,9,10]
+    #plt.xticks(np.arange(min(x), max(x), 1.0))
     plt.ylabel("Time (s)")
     plt.xlabel(str(difficulty) + " Test Cases")
-    plt.show()
-    plt.savefig('/Plots/'+str(difficulty)+'Cases.png')
+    plt.savefig('./Plots/'+str(difficulty)+'Times.png')
+    #plt.show()
 
-def plotMemory():
-    plt.show()
+def plotMemory(backtrackMemory, lhlMem, saMemory, norvigMemory, difficulty):
+    plt.clf()
+    names = ['1','2','3','4','5','6','7','8','9','10']
+    bVals, lhlVals = list(backtrackMemory.values()), list(lhlMem.values())
+    saVals, norvigVals = list(saMemory.values()), list(norvigMemory.values())
+    avgTime = [(average(backtrackMemory) + average(lhlMem) + average(saMemory) + average(norvigMemory))/4]*10
+    plt.plot(names, avgTime, 'k', label="Average")
+    plt.plot(names, bVals, '--bo', label="Backtrack")
+    plt.plot(names, lhlVals, '--x', color='orange', label="LHL")
+    plt.plot(names, saVals, '-g^', label="Simulated Annealing")
+    plt.plot(names, norvigVals, '--rH', label="CSP")
+
+    plt.legend()
+    
+    #x = [1,2,3,4,5,6,7,8,9,10]
+    #plt.xticks(np.arange(min(x), max(x), 1.0))
+    plt.ylabel("Memory (MiB)")
+    plt.xlabel(str(difficulty) + " Test Cases")
+    plt.savefig('./Plots/'+str(difficulty)+'Memory.png')
+    #plt.show()   plt.show()
 
 
 def printResults(backtrackTimes, lhlTimes, saTimes, norvigTimes, backtrackMemory, lhlMem, saMemory, norvigMemory):

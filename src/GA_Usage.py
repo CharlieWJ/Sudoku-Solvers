@@ -84,4 +84,7 @@ def geneticExpert():
     funcs.writeGAResults(gaTimes, gaMemory, "GeneticResExpert.txt")
 
 
-geneticEasy()
+#geneticEasy()
+#geneticMed()
+#geneticHard()
+#geneticExpert()
