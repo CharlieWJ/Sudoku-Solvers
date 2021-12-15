@@ -5,10 +5,6 @@ from LHL import LHL
 import Solvers as solvers
 from boards import easyBackTrack, easyLHL, easySet
 from memory_profiler import memory_usage
-# The only potentially tricky part will be making sure that the object type that represents the Sudoku puzzle
-# is compatible with the various solvers for each algorithm.
-# The general purpose libraries can generate test puzzles for you.
-
 
 def compareEasy():
     ### BACKTRACK TIMING
@@ -337,40 +333,7 @@ def compareExpert():
 # -- CSP code
 # https://norvig.com/sudoku.html
 # https://gist.github.com/ksurya/3940679
+# https://github.com/MaximeDaigle/sudoku 
 
 #  -- Genetic algorithm code
 # https://github.com/chinyan/Genetic-Algorithm-based-Sudoku-Solver
-
-# -- A Comparison of Algorithms
-# https://github.com/MaximeDaigle/sudoku 
-
-
-#Simulated Annealing Times (BEFORE COLLECTING MEMORY):
-# {'Easy1': 0.00503087043762207, 'Easy2': 0.004664897918701172, 
-# 'Easy3': 0.005076885223388672, 'Easy4': 0.0048139095306396484, 
-# 'Easy5': 0.0037000179290771484, 'Easy6': 0.0038671493530273438, 
-# 'Easy7': 0.004639863967895508, 'Easy8': 0.004517078399658203, 
-# 'Easy9': 0.003696918487548828, 'Easy1.': 0.003927946090698242}
-
-#Simulated Annealing Times:
-# {'Easy1': 0.08587193489074707, 'Easy2': 0.08969926834106445,
-# 'Easy3': 0.08126187324523926, 'Easy4': 0.09015417098999023, 
-# 'Easy5': 0.0728461742401123, 'Easy6': 0.07573771476745605, 
-# 'Easy7': 0.13298606872558594, 'Easy8': 0.08292579650878906, 
-# 'Easy9': 0.12128520011901855, 'Easy1.': 0.09370207786560059}
-
-
-
-#Genetic Algorithm Times:
-# {'Easy1': 11.565937757492065, 'Easy2': 14.857425212860107,
-# 'Easy3': 16.82987904548645, 'Easy4': 7.253486156463623,
-# 'Easy5': 9.057284832000732, 'Easy6': 8.421495199203491,
-# 'Easy7': 15.95216679573059, 'Easy8': 11.79118013381958, 
-# 'Easy9': 5.475762844085693, 'Easy10': 16.946889877319336}
-
-#Genetic Algorithm Memory:
-# {'Easy1': 101.6640625, 'Easy2': 102.2265625,
-# 'Easy3': 102.45703125, 'Easy4': 102.4765625, 
-# 'Easy5': 102.484375, 'Easy6': 102.5078125, 
-# 'Easy7': 102.89453125, 'Easy8': 103.28515625, 
-# 'Easy9': 74.5234375, 'Easy10': 74.54296875}
