@@ -316,7 +316,7 @@ def compareExpert():
 #compareEasy()
 #compareMed()
 #compareHard()
-compareExpert()
+#compareExpert()
 
 
 # -- Measurement libraries
